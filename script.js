@@ -16,7 +16,10 @@ function multiply(A, B){
 }
 
 function divide(A, B){
-    if(B == 0) return "ERROR";
+    if(B == 0){
+    disable();
+    return "ERROR"
+    }
     else return A/B;
 }
 
@@ -39,6 +42,9 @@ function operate(A, B, operator){
 
         case '/':
             result = divide(numA, numB);
+            if(result == "ERROR"){
+                return "ERROR";
+            }
         break;
     }
     return Math.round(result * 100)/100;
@@ -59,6 +65,21 @@ function solve(){
     arr1.push(operate(num1, num2, operator));
 }
 
+function disable(){
+    const state = document.querySelectorAll("button");
+    for(let i = 0; i < state.length; i++){ 
+        state[i].disabled = true;
+    }
+    state[0].disabled = false;
+}
+
+function enable(){
+    const state = document.querySelectorAll("button");
+    for(let i = 0; i < state.length; i++){ 
+        state[i].disabled = false;
+    }
+}
+
 const btn0 = document.getElementById("0");
 const btn1 = document.getElementById("1");
 const btn2 = document.getElementById("2");
@@ -75,6 +96,7 @@ const btnsub = document.querySelector(".subtract");
 const btnadd = document.querySelector(".add");
 const btnequ = document.querySelector(".equal");
 const btnclear = document.querySelector(".clear");
+
 
 btn0.addEventListener('click', ()=> {
     if(num == 1) arr1.push(0);
@@ -155,10 +177,13 @@ btnadd.addEventListener('click', ()=> {
 
 // equals
 btnequ.addEventListener('click', ()=> {
+    if(operator != '' && arr2.length != 0)
+    {
     solve();
     operator = '';
     num = 1;
     display();
+    }
 })
 
 // clear
@@ -168,4 +193,5 @@ btnclear.addEventListener('click', ()=> {
     operator = '';
     num = 1;
     display();
+    enable();
 })
