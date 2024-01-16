@@ -11,7 +11,7 @@ button{
     border-width: 2px;
     width: 80px;
     height: 80px;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -32,17 +32,20 @@ button{
     padding: 30px;
     background-color: rgb(147, 147, 147);
     outline: 5px solid black;
+    border-radius: 25px;
 }
 
 .display{
     outline: auto;
     padding: 30px;
+    margin-bottom: 20px;
     width: 320px;
     height: 60px;
     text-align: end;
     background-color: rgb(52, 52, 52);
     color: white;
     outline: 3px solid black;
+    border-radius: 10px;
 }
 
 .display-content{
