@@ -41,7 +41,7 @@ function operate(A, B, operator){
             result = divide(numA, numB);
         break;
     }
-    return result;
+    return Math.round(result * 100)/100;
 }
 
 function display(){
@@ -49,6 +49,14 @@ function display(){
     let arrFull = [arr1.join(''), operator, arr2.join('')];
     screen.textContent = arrFull.join('')
     console.log(arrFull);
+}
+
+function solve(){
+    let num1 = arr1.join('');
+    let num2 = arr2.join('');
+    arr1.length = 0;
+    arr2.length = 0;
+    arr1.push(operate(num1, num2, operator));
 }
 
 const btn0 = document.getElementById("0");
@@ -121,21 +129,25 @@ btn9.addEventListener('click', ()=> {
 
 // function buttons
 btndiv.addEventListener('click', ()=> {
+    if(num > 1) solve();
     operator = "/";
     num++;
     display();
 })
 btnmul.addEventListener('click', ()=> {
+    if(num > 1) solve();
     operator = "*";
     num++;
     display();
 })
 btnsub.addEventListener('click', ()=> {
+    if(num > 1) solve();
     operator = "-";
     num++;
     display();
 })
 btnadd.addEventListener('click', ()=> {
+    if(num > 1) solve();
     operator = "+";
     num++;
     display();
@@ -143,19 +155,17 @@ btnadd.addEventListener('click', ()=> {
 
 // equals
 btnequ.addEventListener('click', ()=> {
-    let num1 = arr1.join('');
-    let num2 = arr2.join('');
-    arr1.length = 0;
-    arr2.length = 0;
-    arr1.push(operate(num1, num2, operator));
+    solve();
     operator = '';
+    num = 1;
     display();
 })
 
 // clear
 btnclear.addEventListener('click', ()=> {
     arr1.length = 0;
-    arr2.legnth = 0;
+    arr2.length = 0;
+    operator = '';
     num = 1;
     display();
 })
