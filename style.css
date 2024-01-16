@@ -38,10 +38,16 @@ button{
     outline: auto;
     padding: 30px;
     width: 320px;
+    height: 60px;
     text-align: end;
     background-color: rgb(52, 52, 52);
     color: white;
     outline: 3px solid black;
+}
+
+.display-content{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .fill{
