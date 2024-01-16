@@ -1,5 +1,7 @@
-let num1, num2, operator;
-const arr = [];
+let num = 1;
+let operator;
+const arr1 = [];
+const arr2 = [];
 
 function add(A, B){
     return A + B;
@@ -19,30 +21,34 @@ function divide(A, B){
 }
 
 function operate(A, B, operator){
+    let numA = parseInt(A);
+    let numB = parseInt(B);
+    let result;
     switch(operator){
-        case 'add':
-            add(A, B);
+        case '+':
+            result = add(numA, numB);
         break;
 
-        case 'subtract':
-            subtract(A, B);
+        case '-':
+            result = subtract(numA, numB);
         break;
 
-        case 'multiply':
-            multiply(A, B);
+        case '*':
+            result = multiply(numA, numB);
         break;
 
-        case 'divide':
-            divide(A, B);
+        case '/':
+            result = divide(numA, numB);
         break;
     }
+    return result;
 }
-
 
 function display(){
     const screen = document.querySelector(".stuff");
-    screen.textContent = arr.join('')
-    console.log(arr);
+    let arrFull = [arr1.join(''), operator, arr2.join('')];
+    screen.textContent = arrFull.join('')
+    console.log(arrFull);
 }
 
 const btn0 = document.getElementById("0");
@@ -63,81 +69,93 @@ const btnequ = document.querySelector(".equal");
 const btnclear = document.querySelector(".clear");
 
 btn0.addEventListener('click', ()=> {
-    arr.push(0);
+    if(num == 1) arr1.push(0);
+    else arr2.push(0);
     display();
 })
 btn1.addEventListener('click', ()=> {
-    arr.push(1);
+    if(num == 1) arr1.push(1);
+    else arr2.push(1);
     display();
 })
 btn2.addEventListener('click', ()=> {
-    arr.push(2)
+    if(num == 1) arr1.push(2);
+    else arr2.push(2);
     display();
 })
 btn3.addEventListener('click', ()=> {
-    arr.push(3)
+    if(num == 1) arr1.push(3);
+    else arr2.push(3);
     display();
 })
 btn4.addEventListener('click', ()=> {
-    arr.push(4)
+    if(num == 1) arr1.push(4);
+    else arr2.push(4);
     display();
 })
 btn5.addEventListener('click', ()=> {
-    arr.push(5);
+    if(num == 1) arr1.push(5);
+    else arr2.push(5);
     display();
 })
 btn6.addEventListener('click', ()=> {
-    arr.push(6);
+    if(num == 1) arr1.push(6);
+    else arr2.push(6);
     display();
 })
 btn7.addEventListener('click', ()=> {
-    arr.push(7);
+    if(num == 1) arr1.push(7);
+    else arr2.push(7);
     display();
 })
 btn8.addEventListener('click', ()=> {
-    arr.push(8);
+    if(num == 1) arr1.push(8);
+    else arr2.push(8);
     display();
 })
 btn9.addEventListener('click', ()=> {
-    arr.push(9);
+    if(num == 1) arr1.push(9);
+    else arr2.push(9);
     display();
 })
 
 // function buttons
 btndiv.addEventListener('click', ()=> {
-    arr.push('/');
+    operator = "/";
+    num++;
     display();
 })
 btnmul.addEventListener('click', ()=> {
-    arr.push('*');
+    operator = "*";
+    num++;
     display();
 })
 btnsub.addEventListener('click', ()=> {
-    arr.push('-');
+    operator = "-";
+    num++;
     display();
 })
 btnadd.addEventListener('click', ()=> {
-    arr.push('+');
+    operator = "+";
+    num++;
     display();
 })
 
 // equals
 btnequ.addEventListener('click', ()=> {
-
+    let num1 = arr1.join('');
+    let num2 = arr2.join('');
+    arr1.length = 0;
+    arr2.length = 0;
+    arr1.push(operate(num1, num2, operator));
+    operator = '';
+    display();
 })
 
 // clear
 btnclear.addEventListener('click', ()=> {
-   arr.length = 0;
-   display();
+    arr1.length = 0;
+    arr2.legnth = 0;
+    num = 1;
+    display();
 })
-
-
-
-
-
-/*function setNum1(){
-    initial = 0;
-    initial * 10 + newval;
-    initial = newval;
-}*/
