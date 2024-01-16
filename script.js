@@ -105,22 +105,31 @@ btn9.addEventListener('click', ()=> {
 
 // function buttons
 btndiv.addEventListener('click', ()=> {
-
+    arr.push('/');
+    display();
 })
 btnmul.addEventListener('click', ()=> {
-    
+    arr.push('*');
+    display();
 })
 btnsub.addEventListener('click', ()=> {
-    
+    arr.push('-');
+    display();
 })
 btnadd.addEventListener('click', ()=> {
-   
+    arr.push('+');
+    display();
 })
+
+// equals
 btnequ.addEventListener('click', ()=> {
-   
+
 })
+
+// clear
 btnclear.addEventListener('click', ()=> {
-   
+   arr.length = 0;
+   display();
 })
 
 
